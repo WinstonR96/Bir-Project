@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
 const SchemaStudent = new Schema({
-    _id: mongoose.Schema.Types.ObjectId,
+    _id: Schema.Types.ObjectId,
     nombre:String,
     apellido:String,
     created: { 
@@ -11,5 +11,7 @@ const SchemaStudent = new Schema({
     }
 })
 
-module.exports = mongoose.model('student',SchemaStudent)
+const Student = mongoose.model('student', SchemaStudent);
+
+module.exports = Student
 

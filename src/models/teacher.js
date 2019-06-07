@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const SchemaTeacher = new Schema({
-    _id: mongoose.Schema.Types.ObjectId,
+    _id: Schema.Types.ObjectId,
     nombre:String,
     apellido:String,
     salario: Number,
@@ -13,7 +13,7 @@ const SchemaTeacher = new Schema({
     }
 })
 
-var teacher  = mongoose.model('teacher',SchemaTeacher)
+const Teacher  = mongoose.model('teacher',SchemaTeacher)
 
-module.exports = teacher
+module.exports = Teacher
 
