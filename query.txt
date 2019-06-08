@@ -45,6 +45,18 @@ mutation unenrollstudent($id_course:String!,$id_student:String!){
   "id_student": "5cfbf049f4f1c32f94689e41"
 }
 
+----------------------------------------------
+query getCourseStudent($id_course:String!){
+  studentsByCourse(id_course:$id_course){
+    nombre
+  }
+}
+
+
+{
+  "id_course": "5cfbf89e5ab48122847ce5f3"
+}
+
 ---------------------------------------------
 query teacherByCourse($id_course:String!){
   teacherByCourse(id_course: $id_course){

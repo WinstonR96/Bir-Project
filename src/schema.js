@@ -28,6 +28,7 @@ export default `
     allTeacher: [Teacher!]!
     TeacherById(id: String!): [Teacher!]!
     teacherByCourse(id_course: String!): [Teacher!]!
+    studentsByCourse(id_course:String!): [Student!]!
   }
   type Mutation {
     createCourse(nombre: String!): Course!

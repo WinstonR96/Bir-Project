@@ -21,6 +21,15 @@ export default {
       return teacher
     },
 
+    studentsByCourse: async (parent, args, { Course, Student }) => {
+      const course = await Course.find({"_id":args.id_course})
+      const students = course[0].student
+      console.log("Estudiantes:",students)
+      const listStudents = await Student.find({"_id":{$in:students}})
+      console.log(listStudents)
+      return listStudents
+    },
+
     allStudent: async (parent, args, { Student }) => {
       const students = await Student.find().where('state').equals(1)
       return students.map(x => {
