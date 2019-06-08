@@ -57,10 +57,16 @@ export default {
       return course
     },
 
-    enrollStudent: async (parent, args, { Course }) => {
+    enrollStudent: async (parent, args, { Course, Student }) => {
       const coursetoadd = await Course.updateOne(args.id, { $push: {student:args.id_student} })
-      const course = await Course.find({ "_id": args.id, "state": 1 })
-      return course
+      const student = await Student.find({ "_id": args.id_student})
+      return student
+    },
+
+    unenrollStudent: async (parent, args, { Course, Student }) => {
+      const coursetoremove = await Course.updateOne(args.id, { $pull: {student:args.id_student} })
+      const student = await Student.find({ "_id": args.id_student})
+      return student
     },
 
     enrollTeacher: async (parent, args, { Course }) => {

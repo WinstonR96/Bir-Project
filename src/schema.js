@@ -37,7 +37,8 @@ export default `
     createTeacher(nombre: String!, apellido: String!, salario: Int!, area: String!): Teacher!
     UpdateTeacher(id: String!, nombre: String!, apellido: String!, salario: Int!, area: String!): Teacher!
     DeleteTeacher(id: String!): Teacher!
-    enrollStudent(id_course:String!,id_student:String!): Course!
+    enrollStudent(id_course:String!,id_student:String!): [Student!]!
+    unenrollStudent(id_course:String!,id_student:String!): [Student!]!
     enrollTeacher(id_course:String!,id_teacher:String!): Course!
   }
   
