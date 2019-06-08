@@ -1,0 +1,48 @@
+mutation createCourse($nombre: String!) {
+    createCourse(nombre: $nombre) {
+      _id,
+      nombre
+    }
+}
+
+{
+  "nombre":"Node.js"
+}
+
+
+------------------------------------------------
+
+query cursos{
+  allCourses{
+    nombre
+  }
+}
+
+
+-------------------------------------------------
+
+mutation createStudent($nombre:String!, $apellido:String!){
+  createStudent(nombre:$nombre,apellido:$apellido){
+    nombre
+  }
+}
+
+{
+  "nombre":"Walter",
+  "apellido": "Rodriguez"
+}
+
+
+--------------------------------------------------
+
+mutation UpdateStudent($id: String!, $nombre:String!, $apellido:String!){
+  UpdateStudent(id:$id,nombre:$nombre,apellido:$apellido){
+    nombre
+  }
+}
+
+{
+  "id": "5cfb1ac064b43f23087b7fbc",
+  "nombre":"Walter Samuel",
+  "apellido": "Rodriguez Stand"
+}
