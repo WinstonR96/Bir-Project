@@ -14,6 +14,13 @@ export default {
 
     },
 
+    teacherByCourse: async (parent, args, { Course, Teacher }) => {
+      const teacherBycourse = await Course.find({"_id":args.id_course})
+      const id_teacher = teacherBycourse[0].teacher
+      const teacher = await Teacher.find({ "_id": id_teacher })
+      return teacher
+    },
+
     allStudent: async (parent, args, { Student }) => {
       const students = await Student.find().where('state').equals(1)
       return students.map(x => {
@@ -24,7 +31,6 @@ export default {
 
     StudentById: async (parent, args, { Student }) => {
       const student = await Student.find({ "_id": args.id, "state": 1 })
-      console.log(student)
       return student
 
     },
@@ -48,6 +54,17 @@ export default {
     createCourse: async (parent, args, { Course }) => {
       const course = await new Course(args).save()
       course._id = course._id.toString()
+      return course
+    },
+
+    enrollStudent: async (parent, args, { Course }) => {
+      const coursetoadd = await Course.updateOne(args.id, { $push: {student:args.id_student} })
+      const course = await Course.find({ "_id": args.id, "state": 1 })
+      return course
+    },
+
+    enrollTeacher: async (parent, args, { Course }) => {
+      const course = await Course.findByIdAndUpdate(args.id_course, { teacher: args.id_teacher})
       return course
     },
 

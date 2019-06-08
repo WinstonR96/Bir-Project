@@ -1,7 +1,7 @@
 export default `
   type Course {
     nombre: String!
-    student: Student
+    student: [Student]
     teacher: Teacher
     state: Int!
   }
@@ -27,6 +27,7 @@ export default `
     StudentById(id: String!): [Student!]!
     allTeacher: [Teacher!]!
     TeacherById(id: String!): [Teacher!]!
+    teacherByCourse(id_course: String!): [Teacher!]!
   }
   type Mutation {
     createCourse(nombre: String!): Course!
@@ -36,6 +37,8 @@ export default `
     createTeacher(nombre: String!, apellido: String!, salario: Int!, area: String!): Teacher!
     UpdateTeacher(id: String!, nombre: String!, apellido: String!, salario: Int!, area: String!): Teacher!
     DeleteTeacher(id: String!): Teacher!
+    enrollStudent(id_course:String!,id_student:String!): Course!
+    enrollTeacher(id_course:String!,id_teacher:String!): Course!
   }
   
 `;

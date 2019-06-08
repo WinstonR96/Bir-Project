@@ -11,6 +11,40 @@ mutation createCourse($nombre: String!) {
   "nombre":"Node.js"
 }
 
+---------------------------------------------
+mutation EnrollTeacher($id_course: String!, $id_teacher: String!){
+  enrollTeacher(id_course: $id_course,id_teacher:$id_teacher){
+    nombre
+  }
+}
+
+{
+  "id_course": "5cfbf89e5ab48122847ce5f3",
+  "id_teacher": "5cfc0011f443892480558ce8"
+}
+---------------------------------------------
+mutation enrollstudent($id_course:String!,$id_student:String!){
+  enrollStudent(id_course:$id_course,id_student:$id_student){
+    nombre
+  }
+}
+
+{
+  "id_course": "5cfbf89e5ab48122847ce5f3",
+  "id_student": "5cfbf006f4f1c32f94689e40"
+}
+
+---------------------------------------------
+query teacherByCourse($id_course:String!){
+  teacherByCourse(id_course: $id_course){
+    nombre
+  }
+}
+
+{
+  "id_course": "5cfbf89e5ab48122847ce5f3"
+}
+
 
 ----------------------------------------------
 
