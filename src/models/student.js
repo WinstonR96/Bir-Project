@@ -7,6 +7,10 @@ const SchemaStudent = new Schema({
     created: { 
         type: Date,
         default: Date.now
+    },
+    state: {
+        type: Number,
+        default: 1
     }
 })
 

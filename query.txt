@@ -1,6 +1,8 @@
+----------------------------------------------
+CRUD CURSOS----------------------------------- 
+----------------------------------------------
 mutation createCourse($nombre: String!) {
     createCourse(nombre: $nombre) {
-      _id,
       nombre
     }
 }
@@ -10,16 +12,55 @@ mutation createCourse($nombre: String!) {
 }
 
 
-------------------------------------------------
+----------------------------------------------
 
 query cursos{
   allCourses{
     nombre
   }
 }
+----------------------------------------------
+
+query GetCourse($id:String!){
+	CourseById(id:$id){
+    nombre
+  }
+}
+
+{
+  "id": "5cfbf89e5ab48122847ce5f3"
+}
+
+
+--------------------------------------------
+
+
+
 
 
 -------------------------------------------------
+CRUD ESTUDIANTES---------------------------------
+-------------------------------------------------
+
+query{
+  allStudent{
+    nombre
+  }
+}
+
+
+-------------------------------------------------
+query GetStudent($id:String!){
+	StudentById(id:$id){
+    nombre
+  }
+}
+
+{
+  "id": "5cfbf049f4f1c32f94689e41"
+}
+
+----------------------------------------------------------
 
 mutation createStudent($nombre:String!, $apellido:String!){
   createStudent(nombre:$nombre,apellido:$apellido){
@@ -45,4 +86,88 @@ mutation UpdateStudent($id: String!, $nombre:String!, $apellido:String!){
   "id": "5cfb1ac064b43f23087b7fbc",
   "nombre":"Walter Samuel",
   "apellido": "Rodriguez Stand"
+}
+
+
+-------------------------------------------------
+
+mutation deleteStudent($id: String!){
+  DeleteStudent(id:$id){
+    nombre
+  }
+}
+
+{
+  "id": "5cfbf006f4f1c32f94689e40"
+}
+
+-------------------------------------------------
+CRUD PROFESORES----------------------------------
+-------------------------------------------------
+
+mutation createTeacher($nombre:String!, $apellido: String!, $salario: Int!, $area: String!){
+  createTeacher(nombre:$nombre,apellido:$apellido,salario:$salario,area:$area){
+    nombre
+    apellido
+    salario
+    area
+  }
+}
+
+
+{
+  "nombre": "John",
+  "apellido": "Doe",
+  "salario": 1500000,
+  "area": "Software"
+}
+
+--------------------------------------------------------
+
+mutation updateTeacher($id: String!, $nombre:String!, $apellido: String!, $salario: Int!, $area: String!){
+  UpdateTeacher(id: $id,nombre:$nombre,apellido:$apellido,salario:$salario,area:$area){
+    nombre
+    apellido
+    salario
+    area
+  }
+}
+
+{
+  "id": "5cfc005bf443892480558ce9",
+  "nombre": "Jose",
+  "apellido": "Torres",
+  "salario": 10000000,
+  "area": "Software"
+}
+
+mutation deleteTeacher($id: String!){
+  DeleteTeacher(id: $id){
+    nombre
+    apellido
+    salario
+    area
+  }
+}
+
+{
+  "id": "5cfc005bf443892480558ce9"
+}
+
+-------------------------------------
+query{
+  allTeacher{
+    nombre
+  }
+}
+------------------------------------
+query GetSimpleTeacher($id:String!){
+  TeacherById(id:$id){
+    nombre
+  }
+}
+
+
+{
+  "id": "5cfc005bf443892480558ce9"
 }
